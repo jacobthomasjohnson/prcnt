@@ -1,1 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Encode+Sans:wght@100;200;300;400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Libre+Franklin:wght@300;400;500;600;700&family=Quicksand:wght@300;400;500;600;700&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Sora:wght@100;200;300;400;500;600;700;800&display=swap");
+* {
+  box-sizing: border-box;
+}
 
+html, body {
+  margin: 0;
+  height: 100vh;
+  background: #e4e1e1;
+  color: #222222;
+  font-family: Quicksand;
+}
+
+.header-main {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 2rem;
+  background: #F7F4F4;
+}
+.header-main .logo-main {
+  font-size: 1.2rem;
+  flex-grow: 1;
+}
+.header-main .ham-main .ham span {
+  display: block;
+  width: 20px;
+  height: 1px;
+  margin: 6px;
+  background: #222222;
+}
+
+.app {
+  padding: 2rem;
+}
+.app .activity-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.app .activity-wrapper .activity-type {
+  margin: 0;
+  padding: 1rem;
+  flex-grow: 1;
+  background: #F7F4F4;
+  border: 1px solid #c9c9c9;
+  border-right: 0;
+  border-radius: 3px 0 0 10px;
+}
+.app .activity-wrapper .activity-time {
+  margin: 0;
+  text-align: center;
+  background: #F7F4F4;
+  border: 1px solid #c9c9c9;
+  border-left: 0;
+  border-radius: 0 10px 3px 0;
+  color: #222222;
+}
+.app .activity-add {
+  margin-top: 1rem;
+}
+.app .activity-add .add {
+  margin: 0;
+  width: 100%;
+  padding: 2rem;
+  background: #42727e;
+  border: 1px solid #c9c9c9;
+  border-radius: 10px;
+  color: #F7F4F4;
+}
+
+.submit {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 2rem;
+  background: lightsalmon;
+}
+
+/*# sourceMappingURL=style.css.map */

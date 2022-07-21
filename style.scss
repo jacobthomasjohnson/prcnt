@@ -1,1 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@100;200;300;400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Libre+Franklin:wght@300;400;500;600;700&family=Quicksand:wght@300;400;500;600;700&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Sora:wght@100;200;300;400;500;600;700;800&display=swap');
 
+* {
+  box-sizing: border-box;
+}
+
+$white-900: #F7F4F4;
+$white-700: #e4e1e1;
+$grey-100: #222222;
+$grey-500: #c9c9c9;
+$green-900: #42727e;
+
+html, body {
+  margin: 0;
+  height: 100vh;
+  background: $white-700;
+  color: $grey-100;
+  font-family: Quicksand;
+}
+
+.header-main {
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  padding: 2rem;
+
+  background: $white-900;
+
+  .logo-main {
+
+    font-size: 1.2rem;
+    flex-grow: 1;
+
+  }
+
+  .ham-main {
+
+    .ham {
+
+      span {
+
+        display: block;
+        
+        width: 20px;
+        height: 1px;
+
+        margin: 6px;
+
+        background: $grey-100;
+
+      }
+
+    }
+
+  }
+
+}
+
+.app {
+
+  padding: 2rem;
+
+  .activity-wrapper {
+
+    display: flex;
+    flex-direction: row;
+
+    width: 100%;
+
+    .activity-type {
+
+      margin: 0;
+      padding: 1rem;
+
+      flex-grow: 1;
+
+      background: $white-900;
+
+      border: 1px solid $grey-500;
+      border-right: 0;
+      border-radius: 3px 0 0 10px;
+
+    }
+
+    .activity-time {
+
+      margin: 0;
+
+      text-align: center;
+
+      background: $white-900;
+
+      border: 1px solid $grey-500;
+      border-left: 0;
+      border-radius: 0 10px 3px 0;
+
+      color: $grey-100;
+
+    }
+
+  }
+
+  .activity-add {
+
+    margin-top: 1rem;
+
+    .add {
+
+      margin: 0;
+
+      width: 100%;
+
+      padding: 2rem;
+
+      background: $green-900;
+
+      border: 1px solid $grey-500;
+      border-radius: 10px;
+
+      color: $white-900;
+
+    }
+
+  }
+
+}
+
+.submit {
+
+  position: fixed;
+  bottom: 0;
+
+  width: 100%;
+
+  text-align: center;
+
+  padding: 2rem;
+  background: lightsalmon;
+
+}
