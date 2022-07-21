@@ -11,22 +11,42 @@ const bodyPadInit = () => {
 
 const addActivity = () => {
 
+  data.latestNum = data.latestNum + 1;
+
   const form = document.querySelector('.activity-form');
   const activity = data.latestActivity;
   const submit = document.querySelector('.submit');
   const newActivity = activity.cloneNode(true);
 
+  newActivity.querySelector('.activity-delete').id = 'delete-' + data.latestNum;
+
+  newActivity.className = 'activity-wrapper activity-' + data.latestNum;
+
   activity.after(newActivity);
+
+  data.latestActivity = newActivity;
+
+  console.log(newActivity)
+  console.log(newActivity.querySelector('.activity-delete'))
+  
+
+}
+
+const deleteActivity = (num) => {
+
+  const deleteBtn = document.querySelector('#delete-' + num);
+  const activity = deleteBtn.parentNode;
+
+  activity.remove();
 
 }
 
 const data = {
 
-  latestActivity: document.querySelector('#activity-default')
+  latestActivity: document.querySelector('.activity-1'),
+  latestNum: 1
 
 }
-
-
 
 
 
