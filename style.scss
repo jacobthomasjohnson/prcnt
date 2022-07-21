@@ -9,6 +9,7 @@ $white-700: #e4e1e1;
 $grey-100: #222222;
 $grey-500: #c9c9c9;
 $green-900: #42727e;
+$red-900: rgb(245, 223, 223);
 
 html, body {
   margin: 0;
@@ -73,6 +74,8 @@ html, body {
     display: flex;
     flex-direction: row;
 
+    margin-bottom: 1rem;
+
     width: 100%;
 
     .activity-type {
@@ -100,9 +103,28 @@ html, body {
 
       border: 1px solid $grey-500;
       border-left: 0;
+      border-right: 0;
+      border-radius: 0;
+
+      color: $grey-100;
+
+    }
+
+    .activity-delete {
+
+      margin: 0;
+
+      text-align: center;
+
+      background: $red-900;
+
+      border: 1px solid $grey-500;
+      border-left: 0;
       border-radius: 0 10px 3px 0;
 
       color: $grey-100;
+
+      padding: 0 10px;
 
     }
 

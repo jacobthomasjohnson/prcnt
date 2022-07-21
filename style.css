@@ -40,6 +40,7 @@ html, body {
 .app .activity-wrapper {
   display: flex;
   flex-direction: row;
+  margin-bottom: 1rem;
   width: 100%;
 }
 .app .activity-wrapper .activity-type {
@@ -57,8 +58,19 @@ html, body {
   background: #F7F4F4;
   border: 1px solid #c9c9c9;
   border-left: 0;
+  border-right: 0;
+  border-radius: 0;
+  color: #222222;
+}
+.app .activity-wrapper .activity-delete {
+  margin: 0;
+  text-align: center;
+  background: rgb(245, 223, 223);
+  border: 1px solid #c9c9c9;
+  border-left: 0;
   border-radius: 0 10px 3px 0;
   color: #222222;
+  padding: 0 10px;
 }
 .app .activity-add {
   margin-top: 1rem;
