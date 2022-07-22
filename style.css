@@ -43,6 +43,9 @@ html, body {
   margin-bottom: 1rem;
   width: 100%;
 }
+.app .activity-wrapper#activity-default {
+  display: none;
+}
 .app .activity-wrapper .activity-type {
   margin: 0;
   padding: 1rem;

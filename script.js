@@ -11,42 +11,83 @@ const bodyPadInit = () => {
 
 const addActivity = () => {
 
-  data.latestNum = data.latestNum + 1;
+  // Clone first div (which is display:none) and append to form.
+  // Find length of array, add one to last element, then push new number to last position.
+  // Assign specific ID that matches with array's value
 
   const form = document.querySelector('.activity-form');
-  const activity = data.latestActivity;
-  const submit = document.querySelector('.submit');
+
+  let lastActivity = form.lastElementChild;
+
+  let newNum = data.numArray[data.numArray.length - 1] + 1;
+
+  data.numArray.push(newNum);
+
+  const activity = data.cloneDiv;
+
   const newActivity = activity.cloneNode(true);
 
-  newActivity.querySelector('.activity-delete').id = 'delete-' + data.latestNum;
+  newActivity.querySelector('.activity-delete').id = 'delete-' + newNum;
 
-  newActivity.className = 'activity-wrapper activity-' + data.latestNum;
+  newActivity.className = 'activity-wrapper activity-' + newNum;
+  newActivity.id = '';
 
-  activity.after(newActivity);
+  newActivity.childNodes[5].addEventListener('click', () => {
+    deleteActivity(newNum);
+  });
 
-  data.latestActivity = newActivity;
+  lastActivity.after(newActivity);
 
-  console.log(newActivity)
-  console.log(newActivity.querySelector('.activity-delete'))
-  
+  console.log(data.numArray)
+
 
 }
 
 const deleteActivity = (num) => {
 
-  const deleteBtn = document.querySelector('#delete-' + num);
-  const activity = deleteBtn.parentNode;
+  // Find position of num in array and delete it's position.
+  // Find div with num ID and delete it.
 
-  activity.remove();
+  if(num == 1) {
+    console.log('nothing to delete');
+  } else {
+
+    const deleteBtn = document.querySelector('#delete-' + num);
+    const activity = deleteBtn.parentNode;
+
+    deleteBtn.replaceWith(deleteBtn.cloneNode(true)); // Remove event listener
+
+    activity.remove();
+
+    let pos = data.numArray.indexOf(num);
+
+    console.log(num);
+
+    if(pos > -1) {
+      data.numArray.splice(pos, 1);
+    }
+
+  }
+
+  console.log(data.numArray)
+
+
 
 }
 
 const data = {
 
-  latestActivity: document.querySelector('.activity-1'),
-  latestNum: 1
+  cloneDiv: document.querySelector('.activity-1'),
+  numArray: [1]
 
 }
+
+document.querySelector('.activity-delete').addEventListener('click', (target) => {
+  let str = target.target.id;
+  let act = str.split('-').pop();
+  deleteActivity(act);
+  console.log('Attempt to delete ' + act)
+});
 
 
 
@@ -65,7 +106,5 @@ document.addEventListener('DOMContentLoaded', () => {
 document.querySelector('.add').addEventListener('click', () => {
 
   addActivity();
-
-  console.log('add')
 
 });
