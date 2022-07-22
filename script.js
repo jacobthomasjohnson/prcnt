@@ -48,9 +48,6 @@ const deleteActivity = (num) => {
   // Find position of num in array and delete it's position.
   // Find div with num ID and delete it.
 
-  if(num == 1) {
-    console.log('nothing to delete');
-  } else {
 
     const deleteBtn = document.querySelector('#delete-' + num);
     const activity = deleteBtn.parentNode;
@@ -66,8 +63,6 @@ const deleteActivity = (num) => {
     if(pos > -1) {
       data.numArray.splice(pos, 1);
     }
-
-  }
 
   console.log(data.numArray)
 
@@ -89,7 +84,25 @@ document.querySelector('.activity-delete').addEventListener('click', (target) =>
   console.log('Attempt to delete ' + act)
 });
 
+const submit = () => {
+  let total = data.numArray.length - 1;
+  let activities = document.querySelectorAll('.activity-wrapper');
+  let outOf = 100;
+  for(const act of activities) {
+    if(act.classList.contains('activity-1')) {
+      // Do Nothing With Invisible Activity
+    } else {
+      console.log(act.childNodes[1].value + ' = ' + act.childNodes[3].options.selectedIndex)
+      console.log(act.childNodes[1].value);
+    }
+  }
+}
 
+const submitBtn = document.querySelector('.submit');
+
+submitBtn.addEventListener('click', () => {
+  submit()
+})
 
 
 
