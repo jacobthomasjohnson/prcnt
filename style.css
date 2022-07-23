@@ -103,6 +103,11 @@ html, body {
   text-align: center;
   padding: 2rem;
   background: lightsalmon;
+  cursor: pointer;
+}
+.submit.active {
+  background: #42727e;
+  color: #F7F4F4;
 }
 
 .menu {

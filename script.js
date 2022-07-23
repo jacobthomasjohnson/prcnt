@@ -100,14 +100,20 @@ const deleteActivity = (num) => {
 const submit = () => {
 
   const results = document.querySelector('.results');
+  const submitBtn = document.querySelector('.submit');
 
   if(!results.classList.contains('active')) {
 
     results.classList.add('active');
+    submitBtn.classList.add('active');
+    submitBtn.textContent = 'CLOSE';
+
 
   } else {
 
     results.classList.remove('active');
+    submitBtn.classList.remove('active');
+    submitBtn.textContent = 'SUBMIT';
 
   }
 
