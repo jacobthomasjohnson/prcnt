@@ -13,26 +13,24 @@ const init = () => {
 
   const bodyPadding = () => {
 
-    const body = document.querySelector('body')
-
-    const header = document.querySelector('.header-main')
-
-    body.style.paddingTop = header.clientHeight + 'px'
-
-  }
-
-  const bodyMarginBottom = () => {
-
     const app = document.querySelector('.app')
-
-    const submit = document.querySelector('.submit');
-
+    const body = document.querySelector('body')
+    const header = document.querySelector('.header-main')
+    body.style.paddingTop = header.clientHeight + 'px'
     app.style.paddingBottom = submit.clientHeight * 2 + 'px'
 
   }
 
+  const resultsTop = () => {
+
+    const results = document.querySelector('.results');
+    const header = document.querySelector('.header-main');
+    results.style.top = header.clientHeight + 'px';
+
+  }
+
   bodyPadding()
-  bodyMarginBottom()
+  resultsTop();
 
 }
 
@@ -101,6 +99,20 @@ const deleteActivity = (num) => {
 
 const submit = () => {
 
+  const results = document.querySelector('.results');
+
+  if(!results.classList.contains('active')) {
+
+    results.classList.add('active');
+
+  } else {
+
+    results.classList.remove('active');
+
+  }
+
+  let allResults = [];
+
   let total = data.numArray.length - 1;
 
   let activities = document.querySelectorAll('.activity-wrapper');
@@ -113,28 +125,39 @@ const submit = () => {
 
       switch(act.childNodes[3].options.selectedIndex) {
         case 0:
-          console.log(act.childNodes[1].value + ' for less than one hour');
+          allResults.push(act.childNodes[1].value + ' for less than one hour');
           console.log(1 / outOf + '%');
           break;
         case 1:
-          console.log(act.childNodes[1].value + ' for 1-2 hour(s)');
+          allResults.push(act.childNodes[1].value + ' for 1-2 hour(s)');
           console.log(1 / outOf + '% to ' + 2 / outOf + '%');
           break;
         case 2:
-          console.log(act.childNodes[1].value + ' for 2-4 hours');
+          allResults.push(act.childNodes[1].value + ' for 2-4 hours');
           console.log(2 / outOf + '% to ' + 4 / outOf + '%');
           break;
         case 3:
-          console.log(act.childNodes[1].value + ' for 4-8 hours');
+          allResults.push(act.childNodes[1].value + ' for 4-8 hours');
           console.log(4 / outOf + '% to ' + 8 / outOf + '%');
           break;
         case 4:
-          console.log(act.childNodes[1].value + ' for 8+ hours');
+          allResults.push(act.childNodes[1].value + ' for 8+ hours');
           console.log(8 / outOf + '%');
           break;
       }
 
     }
+
+  }
+
+  results.innerHTML = '';
+
+  for(i = 0; i < allResults.length; i++) {
+
+    let div = document.createElement('div');
+    div.className = 'result';
+    div.textContent = allResults[i];
+    results.append(div);
 
   }
 

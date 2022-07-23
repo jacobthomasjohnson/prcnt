@@ -190,6 +190,8 @@ html, body {
 
   width: 100%;
 
+  z-index: 40;
+
   text-align: center;
 
   padding: 2rem;
@@ -250,6 +252,42 @@ html, body {
       margin-top: 1rem;
 
     }
+
+  }
+
+}
+
+.results {
+
+  position: fixed;
+  top: 0; /* should be height of header */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: $white-900;
+
+  opacity: 0%;
+
+  z-index: 30;
+
+  transition: all 0s linear, opacity 1s ease;
+
+  transform: translateY(100%);
+
+  &.active {
+
+    transform: translateY(0);
+    opacity: 100%;
+
+  }
+
+  .result {
+
+    &:nth-child(1) {
+      padding-top: 1rem;
+    }
+
+    padding: 2rem;
 
   }
 

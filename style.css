@@ -99,6 +99,7 @@ html, body {
   position: fixed;
   bottom: 0;
   width: 100%;
+  z-index: 40;
   text-align: center;
   padding: 2rem;
   background: lightsalmon;
@@ -139,6 +140,30 @@ html, body {
   background: #42727e;
   color: #F7F4F4;
   margin-top: 1rem;
+}
+
+.results {
+  position: fixed;
+  top: 0;
+  /* should be height of header */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #F7F4F4;
+  opacity: 0%;
+  z-index: 30;
+  transition: all 0s linear, opacity 1s ease;
+  transform: translateY(100%);
+}
+.results.active {
+  transform: translateY(0);
+  opacity: 100%;
+}
+.results .result {
+  padding: 2rem;
+}
+.results .result:nth-child(1) {
+  padding-top: 1rem;
 }
 
 /*# sourceMappingURL=style.css.map */
