@@ -269,14 +269,13 @@ html, body {
   opacity: 0%;
 
   z-index: 30;
+  pointer-events: none;
 
-  transition: all 0s linear, opacity 1s ease;
-
-  transform: translateY(100%);
+  transition: all 0.2s ease;
 
   &.active {
 
-    transform: translateY(0);
+    pointer-events: all;
     opacity: 100%;
 
   }
