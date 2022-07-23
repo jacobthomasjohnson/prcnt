@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Encode+Sans:wght@100;200;300;400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Libre+Franklin:wght@300;400;500;600;700&family=Quicksand:wght@300;400;500;600;700&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Sora:wght@100;200;300;400;500;600;700;800&display=swap");
 * {
   box-sizing: border-box;
+  touch-action: manipulation;
 }
 
 html, body {
@@ -15,6 +16,7 @@ html, body {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 100;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -25,6 +27,10 @@ html, body {
 .header-main .logo-main {
   font-size: 1.2rem;
   flex-grow: 1;
+}
+.header-main .ham-main .ham {
+  padding: 1rem;
+  margin: -1rem;
 }
 .header-main .ham-main .ham span {
   display: block;
@@ -96,6 +102,43 @@ html, body {
   text-align: center;
   padding: 2rem;
   background: lightsalmon;
+}
+
+.menu {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  opacity: 0%;
+  pointer-events: none;
+  align-items: center;
+  justify-content: center;
+  background-color: #F7F4F4;
+  transition: all 0.1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.menu.active {
+  opacity: 100%;
+  pointer-events: all;
+}
+.menu.active div {
+  opacity: 100%;
+}
+.menu div {
+  padding: 2rem;
+  text-align: center;
+  transition: all 2s cubic-bezier(0.22, 1, 0.36, 1);
+  opacity: 0%;
+}
+.menu div button {
+  -webkit-appearance: none;
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  background: #42727e;
+  color: #F7F4F4;
+  margin-top: 1rem;
 }
 
 /*# sourceMappingURL=style.css.map */

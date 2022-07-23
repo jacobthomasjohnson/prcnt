@@ -1,11 +1,38 @@
+/*     Objects     */
+
+const data = {
+
+  cloneDiv: document.querySelector('.activity-1'),
+  numArray: [1]
+
+}
+
 /*     Functions     */
 
-const bodyPadInit = () => {
+const init = () => {
 
-  const body = document.querySelector('body')
-  const header = document.querySelector('.header-main')
+  const bodyPadding = () => {
 
-  body.style.paddingTop = header.clientHeight + 'px'
+    const body = document.querySelector('body')
+
+    const header = document.querySelector('.header-main')
+
+    body.style.paddingTop = header.clientHeight + 'px'
+
+  }
+
+  const bodyMarginBottom = () => {
+
+    const app = document.querySelector('.app')
+
+    const submit = document.querySelector('.submit');
+
+    app.style.paddingBottom = submit.clientHeight * 2 + 'px'
+
+  }
+
+  bodyPadding()
+  bodyMarginBottom()
 
 }
 
@@ -17,29 +44,29 @@ const addActivity = () => {
 
   const form = document.querySelector('.activity-form');
 
-  let lastActivity = form.lastElementChild;
+  let lastActivity = form.lastElementChild; // Selects the last activity div in line
 
-  let newNum = data.numArray[data.numArray.length - 1] + 1;
+  let newNum = data.numArray[data.numArray.length - 1] + 1; // Finds the ID of the new activity
 
-  data.numArray.push(newNum);
+  data.numArray.push(newNum); // Pushes new activity to array list
 
-  const activity = data.cloneDiv;
+  const newActivity = data.cloneDiv.cloneNode(true); // Clones default div for repurpose
 
-  const newActivity = activity.cloneNode(true);
+  newActivity.querySelector('.activity-delete').id = 'delete-' + newNum; // Add unique ID to delete button
 
-  newActivity.querySelector('.activity-delete').id = 'delete-' + newNum;
+  newActivity.className = 'activity-wrapper activity-' + newNum; // Add unique class names to wrapper
 
-  newActivity.className = 'activity-wrapper activity-' + newNum;
-  newActivity.id = '';
+  newActivity.id = ''; // Remove ID from new activity div
 
-  newActivity.childNodes[5].addEventListener('click', () => {
-    deleteActivity(newNum);
+  newActivity.childNodes[5].addEventListener('click', () => { // Select new activity delete button and add listener
+
+    deleteActivity(newNum); // Add delete functionality to delete button for new activity
+
   });
 
-  lastActivity.after(newActivity);
+  lastActivity.after(newActivity); // Insert new activity after the latest activity
 
-  console.log(data.numArray)
-
+  console.log(data.numArray) // Display array data
 
 }
 
@@ -48,63 +75,102 @@ const deleteActivity = (num) => {
   // Find position of num in array and delete it's position.
   // Find div with num ID and delete it.
 
+  const deleteBtn = document.querySelector('#delete-' + num);
 
-    const deleteBtn = document.querySelector('#delete-' + num);
-    const activity = deleteBtn.parentNode;
+  const activity = deleteBtn.parentNode;
 
-    deleteBtn.replaceWith(deleteBtn.cloneNode(true)); // Remove event listener
+  deleteBtn.replaceWith(deleteBtn.cloneNode(true)); // Remove event listener
 
-    activity.remove();
+  activity.remove();
 
-    let pos = data.numArray.indexOf(num);
+  let pos = data.numArray.indexOf(num);
 
-    console.log(num);
+  console.log(num);
 
-    if(pos > -1) {
-      data.numArray.splice(pos, 1);
-    }
+  if(pos > -1) {
+
+    data.numArray.splice(pos, 1);
+
+  }
 
   console.log(data.numArray)
 
-
-
 }
 
-const data = {
 
-  cloneDiv: document.querySelector('.activity-1'),
-  numArray: [1]
-
-}
-
-document.querySelector('.activity-delete').addEventListener('click', (target) => {
-  let str = target.target.id;
-  let act = str.split('-').pop();
-  deleteActivity(act);
-  console.log('Attempt to delete ' + act)
-});
 
 const submit = () => {
+
   let total = data.numArray.length - 1;
+
   let activities = document.querySelectorAll('.activity-wrapper');
-  let outOf = 100;
+
+  let outOf = 24;
+
   for(const act of activities) {
-    if(act.classList.contains('activity-1')) {
-      // Do Nothing With Invisible Activity
-    } else {
-      console.log(act.childNodes[1].value + ' = ' + act.childNodes[3].options.selectedIndex)
-      console.log(act.childNodes[1].value);
+
+    if(!act.classList.contains('activity-1')) {
+
+      switch(act.childNodes[3].options.selectedIndex) {
+        case 0:
+          console.log(act.childNodes[1].value + ' for less than one hour');
+          console.log(1 / outOf + '%');
+          break;
+        case 1:
+          console.log(act.childNodes[1].value + ' for 1-2 hour(s)');
+          console.log(1 / outOf + '% to ' + 2 / outOf + '%');
+          break;
+        case 2:
+          console.log(act.childNodes[1].value + ' for 2-4 hours');
+          console.log(2 / outOf + '% to ' + 4 / outOf + '%');
+          break;
+        case 3:
+          console.log(act.childNodes[1].value + ' for 4-8 hours');
+          console.log(4 / outOf + '% to ' + 8 / outOf + '%');
+          break;
+        case 4:
+          console.log(act.childNodes[1].value + ' for 8+ hours');
+          console.log(8 / outOf + '%');
+          break;
+      }
+
     }
+
   }
+
 }
 
 const submitBtn = document.querySelector('.submit');
 
 submitBtn.addEventListener('click', () => {
-  submit()
+
+  submit();
+
 })
 
+const ham = document.querySelector('.ham');
 
+const menu = document.querySelector('.menu');
+
+ham.addEventListener('click', () => {
+
+  if(!menu.classList.contains('active')) {
+
+    menu.classList.add('active');
+
+  } else {
+
+    menu.classList.remove('active');
+
+  }
+
+});
+
+const link = (src) => {
+
+  window.location.href = src;
+
+}
 
 
 
@@ -112,7 +178,7 @@ submitBtn.addEventListener('click', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  bodyPadInit();
+  init();
 
 });
 
